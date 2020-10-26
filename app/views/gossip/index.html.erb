@@ -1,10 +1,72 @@
-<h1>Bienvenue</h1>
+<%
+=begin%>
+ <div class="container">
+<div class="text-center mt-5">
+<h1 class="text-dark py-5">Bienvenue</h1>
+ <h4 class="text-dark py-5">Voici la liste des potins</h4>
+   </div>
+
+ <div class="d-flex mt-4">
+    <div class="row justify-content-center">  
 <% if @gossips %>
   <% @gossips.each do |gossip| %>
-    <p><%= gossip.title %></p>
-    <p><%= gossip.content %></p>
+
+<!-- Card -->
+<div class="col-md-5 col-sm-12 col-xs-12 card m-4">
+
+  
+  <!-- Card content -->
+  <div class="card-body">
+
+
+    <h4 class="card-title"><%= gossip.title %></h4>
+     <p class="card-text"><%= gossip.user[:first_name] %></p>
+   <%= link_to "Accéder au gossip", gossip_path(gossip.id), :class =>"btn btn-info" %>
+
   <% end %>
 <% else %>
   <p>Il n'y a pas de potin</p>
 <% end %>
+</div>
+<!-- Card -->
+
+</div>
+</div>
+</div> 
+<%
+=end%>
+
+
+<div class="container">
+  <div class="text-center mt-5">
+    <h1 class="text-dark py-5">Welcome to the Gossip-project </h1>
+    <h4 class="text-dark py-5">Voici la liste des potins postés</h4>
+  </div>
+  <div class="d-flex mt-4">
+    <div class="row justify-content-center">  
+      <% if @gossips %>
+      <% @gossips.each do |gossip| %>
+      <div class="col-md-5 col-sm-12 col-xs-12 card m-4">
+        <!-- Card content -->
+        <div class="card-body">
+          <div class="text-right text-info mb-4">
+             <p class="card-text"><%= gossip.user[:first_name] %></p>
+          </div>
+          <!-- Title -->
+          
+          <h4 class="card-title"><%= truncate(gossip.title, length: 50) %></h4>
+          <!-- Text -->
+          <p class="card-text"><%= truncate(gossip.content, length: 100) %></p>
+          <!-- Button -->
+          <%= link_to  "En lire plus", gossip_path(gossip.id) %>
+
+        </div>
+      </div>
+      <% end %>
+      <% else %>
+        <p>Il n'y a pas de potin</p>
+      <% end %>
+    </div>
+  </div>
+</div>
 

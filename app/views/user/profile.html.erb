@@ -1,0 +1,28 @@
+
+     
+     
+     
+     <div class="jumbotron">
+  <h1 class="display-4"> <%=@user.first_name%> <%=@user.last_name%> </h1>
+  <p class="lead">Age : <%=@user.age%>  </p>
+  <p class="lead">Come from : <%=@user.city.name%>, <%=@user.city.zip_code%> </p>
+  <p class="lead">Email : <%=@user.email%>  </p>
+
+  <p class="lead"><%=@user.description%>  </p>
+  <hr class="my-4">
+  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+   <p><%= link_to "Retour !", root_path, :class =>"btn btn-secondary" %></p>
+</div>
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
