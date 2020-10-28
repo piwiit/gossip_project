@@ -6,7 +6,7 @@ class GossipController < ApplicationController
   end
 
   def show
-    id = params[:id]
+    params[:id]
     @gossip = Gossip.find(params[:id])
   end
 
@@ -17,8 +17,8 @@ class GossipController < ApplicationController
 
   def create
     @gossip = Gossip.new(title: params[:title],
-                            content: params[:content],
-                            user_id: params[:user_id])
+                         content: params[:content],
+                         user_id: params[:user_id])
 
     if @gossip.save # essaie de sauvegarder en base @gossip
       flash[:notice] = 'Post successfully created'

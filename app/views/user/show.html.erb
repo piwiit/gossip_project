@@ -3,6 +3,8 @@
      
      
      <div class="jumbotron">
+  <div class="text-center mt-5">
+
   <h1 class="display-4"> <%=@user.first_name%> <%=@user.last_name%> </h1>
   <p class="lead">Age : <%=@user.age%>  </p>
   <p class="lead">Come from : <%=@user.city.name%>, <%=@user.city.zip_code%> </p>
@@ -13,6 +15,8 @@
   <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
    <p><%= link_to "Retour !", gossip_index_path, :class =>"btn btn-secondary" %></p>
 </div>
+  </div>
+
      
      
      

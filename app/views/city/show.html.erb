@@ -1,0 +1,25 @@
+
+
+<div class="container-fluid text-center">
+  <div class="cover-container d-flex w-100 p-3 mx-auto flex-column">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="display-5"> <%= @city.name%> </h1>
+          <div class="card-deck message">
+            <% @city.users.each do |user| %>
+              <% user.gossips.each do |gossip| %>
+                <div class="card shadow-sm">
+                  <div class="card-body">
+                    <h5 class="card-title">Le potin de <%= gossip.user.first_name%></h5>
+                    <p class="card-text"><%= gossip.content%></p>
+                    <%= link_to  "lire le gossip", gossip_path(gossip.id) %>
+                      </div>
+                   </div>
+                <% end %>
+                <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
