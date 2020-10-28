@@ -7,7 +7,7 @@
 
   <h1 class="display-4"> <%=@user.first_name%> <%=@user.last_name%> </h1>
   <p class="lead">Age : <%=@user.age%>  </p>
-  <p class="lead">Come from : <%=@user.city.name%>, <%=@user.city.zip_code%> </p>
+  <p class="lead">Come from : <a href="<%= city_path(@user.city_id)%>"><%= @user.city.name %></a></p>
   <p class="lead">Email : <%=@user.email%>  </p>
 
   <p class="lead"><%=@user.description%>  </p>
