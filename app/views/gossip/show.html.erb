@@ -9,25 +9,30 @@
   <header>
 
   </header>
-
+<div class="container">
+  <div class="text-center mt-5">
+ 
     <h1>Page d'accueil</h1>
-      <p>Bienvenue <%= params["id"]%> !
+      <p>Bienvenue <%= @gossip.user[:first_name]%> !
       <br/>
       <br/> 
       <div class="card">
         <div class="card-header">
-          Quote
+         <h4 class="card-title"><%= @gossip.title %></h4>
         </div>
         <div class="card-body">
           <blockquote class="blockquote mb-0">
-            <p><%= @gossip.content %></p>
-            <footer class="blockquote-footer"><%= @gossip.user[:first_name] %><cite title="Source Title">  <%= @gossip.created_at %></cite></footer>
-            <%= link_to "profile du createur", user_path(@gossip.user.id), :class =>"btn btn-secondary" %>
+            <p>"<%= @gossip.content %>"</p>
+            <footer class="blockquote-footer"><%= @gossip.user[:first_name] %> -<cite title="Source Title"> </br> from <%= @gossip.user.city.name %></cite></footer>
+            <%= link_to "profile du createur",  user_path(@gossip.user.id), :class =>"btn btn-secondary" %>
           </blockquote>
         </div>
       </div>
   </body>
-      <p><%= link_to "Retour !", root_path, :class =>"btn btn-secondary" %></p>
+      <p><%= link_to "Retour !", gossip_index_path, :class =>"btn btn-outline-primary" %></p>
+  </div>
+  </div>
+
 </html>
 
  

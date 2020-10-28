@@ -1,49 +1,18 @@
-<%
-=begin%>
- <div class="container">
-<div class="text-center mt-5">
-<h1 class="text-dark py-5">Bienvenue</h1>
- <h4 class="text-dark py-5">Voici la liste des potins</h4>
-   </div>
-
- <div class="d-flex mt-4">
-    <div class="row justify-content-center">  
-<% if @gossips %>
-  <% @gossips.each do |gossip| %>
-
-<!-- Card -->
-<div class="col-md-5 col-sm-12 col-xs-12 card m-4">
-
-  
-  <!-- Card content -->
-  <div class="card-body">
-
-
-    <h4 class="card-title"><%= gossip.title %></h4>
-     <p class="card-text"><%= gossip.user[:first_name] %></p>
-   <%= link_to "Accéder au gossip", gossip_path(gossip.id), :class =>"btn btn-info" %>
-
-  <% end %>
-<% else %>
-  <p>Il n'y a pas de potin</p>
-<% end %>
-</div>
-<!-- Card -->
-
-</div>
-</div>
-</div> 
-<%
-=end%>
 
 
 <div class="container">
   <div class="text-center mt-5">
+  <% if flash[:notice] %>
+    <div class="alert alert-success" role="alert">Post successfully created</div>
+  <% end %>
     <h1 class="text-dark py-5">Welcome to the Gossip-project </h1>
-    <h4 class="text-dark py-5">Voici la liste des potins postés</h4>
-  </div>
+    <button type="button" class="btn btn-outline-primary mx-auto"><%= link_to  "Créer un potin", new_gossip_path %></button>
   <div class="d-flex mt-4">
+    <h4 class="text-dark py-5 mx-auto">Voici la liste des potins postés</h4>
+  </div>
+  
     <div class="row justify-content-center">  
+    
       <% if @gossips %>
       <% @gossips.each do |gossip| %>
       <div class="col-md-5 col-sm-12 col-xs-12 card m-4">
@@ -63,6 +32,7 @@
         </div>
       </div>
       <% end %>
+      
       <% else %>
         <p>Il n'y a pas de potin</p>
       <% end %>

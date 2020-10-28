@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreatePmUsers < ActiveRecord::Migration[6.0]
   def change
     create_table :pm_users do |t|
