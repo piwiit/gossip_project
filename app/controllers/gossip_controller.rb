@@ -17,8 +17,7 @@ class GossipController < ApplicationController
 
   def create
     @gossip = Gossip.create(params.permit(:title, :content))
-   
-    @gossip.user = session[:user_id]
+
     if @gossip.save # essaie de sauvegarder en base @gossip
       flash[:notice] = 'Post successfully created'
       redirect_to gossip_index_path

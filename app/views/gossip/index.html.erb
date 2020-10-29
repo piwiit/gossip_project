@@ -2,8 +2,13 @@
 
 <div class="container">
   <div class="text-center mt-5">
+   <% if flash[:load] %>
+        <div class="alert alert-success" role="alert">
+          <strong>Nice !</strong> Ton user a été créé avec succès !
+        </div>
+      <% end %>
   <% if flash[:load] %>
-    <div class="alert alert-success" role="alert">Load successfully welcome <%=session[:user_id.first_name]%></div>
+    <div class="alert alert-success" role="alert">welcome <%current_user.first_name%></div>
   <% end %>
   <% if flash[:notice] %>
     <div class="alert alert-success" role="alert">Post successfully created </div>
@@ -17,6 +22,7 @@
   </div>
   
     <div class="row justify-content-center">  
+      <% if current_user.present? %>
     
       <% if @gossips %>
       <% @gossips.each do |gossip| %>
@@ -41,6 +47,8 @@
       <% else %>
         <p>Il n'y a pas de potin</p>
       <% end %>
+      <% end %>
+
     </div>
   </div>
 </div>

@@ -12,10 +12,12 @@ class UserController < ApplicationController
   def create
     @user = User.new(first_name: params[:first_name], last_name: params[:last_name], description: params[:description], city_id: params[:city_id], email: params[:email], age: params[:age], password: params[:password])
     if @user.save
+      session[:user_id] = @user.id
+      flash[:load] = 'great'
       puts 'success'
       redirect_to gossip_index_path
     else
-      flash[:failure] = 'Echec lors de la création du compte, veuillez réessayer'
+      flash[:danger] = 'Please log in.'
       render 'new'
     end
   end

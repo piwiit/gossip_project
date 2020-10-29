@@ -36,6 +36,8 @@
 
     <!-- Links -->
     <ul class="navbar-nav mr-auto">
+         <%if current_user %>
+
       <li class="nav-item ">
       <%= link_to "Acceuil",gossip_index_path, class:"nav-link" %>
       </li>
@@ -46,8 +48,18 @@
          <%= link_to "Contact",contact_index_path, class:"nav-link" %>
       </li>
   </ul>
-  <p><%= session[:user_id] %></p>
- <a href="<%= new_session_path %>" class="btn blue-gradient" data-method="DELETE">LOGOUT</a>
+      
+    <%= link_to "profile",  user_path(current_user.id), class:"btn blue-gradient" %>
+    <%= link_to "Se déconnecter", session_path(session.id), method: :delete, class: "btn blue-gradient" %>
+         <%else %>
+         <li class="nav-item">
+              <%= link_to "S'inscrire", new_user_path, class:"btn blue-gradient" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Se connecter", new_session_path, class:"btn blue-gradient" %>
+            </li>
+            <% end %>
+
 </div>
 <!--/.Navbar-->
     </nav>
@@ -60,5 +72,16 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+    <!-- Footer -->
+<footer class="page-footer font-small blue">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="http://www.jonathanbouillaux.ovh"> @Jonathan-Bouillaux / The Hacking Project</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
   </body>
 </html>
