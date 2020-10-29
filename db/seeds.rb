@@ -26,7 +26,7 @@ tags = []
 end
 
 10.times do
-  user = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, description: Faker::Lorem.sentence(word_count: 50), age: Faker::Number.within(range: 18..99), city: cities.sample)
+  user = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, description: Faker::Lorem.sentence(word_count: 50), age: Faker::Number.within(range: 18..99), city: cities.sample, password: 'foobar')
   users << user
   puts "USER  ====> #{user.first_name} created"
 end

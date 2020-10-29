@@ -24,11 +24,14 @@
           <blockquote class="blockquote mb-0">
             <p>"<%= @gossip.content %>"</p>
             <footer class="blockquote"><%= @gossip.user[:first_name] %><cite title="Source Title"> </br> from <a href="<%= city_path(@gossip.user.city_id)%>"><%= @gossip.user.city.name %></a></cite></footer>
-            <%= link_to "profile du createur",  user_path(@gossip.user.id), class:"btn btn-secondary" %>
+            <%= link_to "profile du createur",  user_path(@gossip.user.id), class:"btn blue-gradient" %>
+            <%= link_to "Editer le gossip",   edit_gossip_path(@gossip.id), class:"btn blue-gradient" %>
+            <a href="<%= gossip_path(@gossip.id) %>" class="btn blue-gradient" data-confirm="êtes-vous sur?" data-method="DELETE">Supprimer le gossip</a>
           </blockquote>
       </div>
   </body>
-      <p><%= link_to "Retour !", gossip_index_path, :class =>"btn btn-outline-primary" %></p>
+      <p><%= link_to "Retour !", gossip_index_path, :class =>"btn aqua-gradient" %></p>
+      
   </div>
   </div>
 

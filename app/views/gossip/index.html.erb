@@ -2,8 +2,13 @@
 
 <div class="container">
   <div class="text-center mt-5">
+  <% if flash[:load] %>
+    <div class="alert alert-success" role="alert">Load successfully welcome <%=session[:user_id.first_name]%></div>
+  <% end %>
   <% if flash[:notice] %>
-    <div class="alert alert-success" role="alert">Post successfully created</div>
+    <div class="alert alert-success" role="alert">Post successfully created </div>
+     <% elsif flash[:destroy] %>
+     <div class="alert alert-primary" role="alert">Post successfully destroy</div>
   <% end %>
     <h1 class="text-dark py-5">Welcome to the Gossip-project </h1>
     <button type="button" class="btn btn-outline-primary mx-auto"><%= link_to  "Créer un potin", new_gossip_path %></button>

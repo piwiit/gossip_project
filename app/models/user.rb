@@ -7,7 +7,9 @@ class User < ApplicationRecord
   # presence: true
   # validates :description,
   # length: { maximum: 140 }
-
+  has_secure_password
+  validates :password,
+            presence: true
   belongs_to :city
   has_many :gossips
   has_many :sent_messages, foreign_key: 'sender_id', class_name: 'PrivateMessage'

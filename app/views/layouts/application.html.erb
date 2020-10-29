@@ -21,7 +21,7 @@
 
   <body>
    <!--Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-dark primary-color">
+    <nav class="navbar navbar-expand-lg navbar-dark blue-gradient">
 
   <!-- Navbar brand -->
 <a href="<%= gossip_index_path %>" class="navbar-brand"><i class="fab fa-gofore"></i>ossip Project</a>
@@ -46,6 +46,8 @@
          <%= link_to "Contact",contact_index_path, class:"nav-link" %>
       </li>
   </ul>
+  <p><%= session[:user_id] %></p>
+ <a href="<%= new_session_path %>" class="btn blue-gradient" data-method="DELETE">LOGOUT</a>
 </div>
 <!--/.Navbar-->
     </nav>
