@@ -1,34 +1,13 @@
 
+ <!-- Default form login -->
+<form class="text-center border border-light p-5" action="#!">
 
-    <div class = "container">
-<h1 class = "text-center">Connexion</h1>
-   
-    <% if flash[:danger] %>
-    <div class="alert alert-danger my-3" role="alert">Echec lors de la Connexion, veuillez réessayer
-    </div>    
+   <%= form_with url: sessions_path do |f| %>
+        <p class="h4 mb-4">Connextion</p>
+        <!-- E-mail -->
+        <%= f.text_field :email, class:"form-control mb-4", placeholder:"Mail" %>
+        <!-- Password -->
+        <%= f.password_field :password, class:"form-control", placeholder:"Mot de passe" %>
+        <!-- Sign up button -->
+        <%= submit_tag "Ce connecter", class:"btn blue-gradient"%>  <a href="<%= gossip_index_path %>" class="btn peach-gradient">Annuler</a>
     <% end %>
-
-    <%= form_tag url_for(action: 'create'), method: "post" do %>
-    
-    <div class = "form-group">
-      <%= label_tag 'email' %><br>
-    <div class = "form-control">
-        <%= text_field_tag 'email'%>
-    </div>
-      <br /> <br />
-    </div>
-
-     <div class = "form-group mx-auto">
-      <%= label_tag 'Mot de passe' %><br>
-      <%= text_field_tag 'password'%>
-    </div>
-      
-       <div class="form-group mx-auto">
-    <%= submit_tag "Ce connecter", class:"btn blue-gradient"%>  <a href="<%= gossip_index_path %>" class="btn peach-gradient">Annuler</a>
-  
-    </div>
-
-    <% end %>
-
-</div>
- 

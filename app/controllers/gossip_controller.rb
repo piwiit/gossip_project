@@ -16,14 +16,16 @@ class GossipController < ApplicationController
   end
 
   def create
-    @gossip = Gossip.create(params.permit(:title, :content))
+    @gossip = Gossip.new(user: current_user, content: params[:content], title: params[:title])
 
     if @gossip.save # essaie de sauvegarder en base @gossip
+      puts 'ok'
       flash[:notice] = 'Post successfully created'
       redirect_to gossip_index_path
       # si ça marche, il redirige vers la page d'index du site
     else
       flash[:failure] = 'Echec lors de la création du gossip, veuillez réessayer'
+      puts 'pas ok'
       render 'new'
       # redirect_to request.referrer
 
@@ -46,7 +48,7 @@ class GossipController < ApplicationController
   end
 
   def post_params
-    params.require(:gossip).permit(:title, :content)
+    params.require(:gossip).call(title: params[:title], content: params[:content])
   end
 
   def destroy

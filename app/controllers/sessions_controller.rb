@@ -2,7 +2,7 @@
 
 class SessionsController < ApplicationController
   def new
-     #et hop, cette variable @user est l'instance User contenant toutes les infos de l'utilisateur connecté
+    # et hop, cette variable @user est l'instance User contenant toutes les infos de l'utilisateur connecté
   end
 
   def create
@@ -19,10 +19,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
-    puts session[:user_id]
-    if session[:user_id] == "new"
+    session.delete(:user_id)
     redirect_to new_session_path
   end
-end
 end
