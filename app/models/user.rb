@@ -17,4 +17,8 @@ class User < ApplicationRecord
   has_many :received_messages, through: :pm_users, class_name: 'PrivateMessage'
   has_many :comments
   has_many :likes
+  def remember(remember_token)
+    remember_digest = BCrypt::Password.create(remember_token)
+    update(remember_digest: remember_digest)
+  end
 end

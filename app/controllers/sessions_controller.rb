@@ -9,7 +9,9 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:email])
 
     if @user&.authenticate(params[:password])
-      session[:user_id] = @user.id
+      login(user)
+      remember(user)
+
       flash[:load] = 'Post successfully created'
       redirect_to gossip_index_path
     else
