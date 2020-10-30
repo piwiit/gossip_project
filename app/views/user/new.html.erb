@@ -35,7 +35,7 @@
       <br /> <br />
 
       <%= label_tag 'Ton n° de Ville' %> <br/>
-      <%= text_field_tag 'city_id', @user.city_id %>
+      <%= text_field_tag 'city_id', @user.city_id, collection: @city_list, as: :select %>
       <br /> <br />
 
       <%= label_tag 'Mot de passe' %> <br/>

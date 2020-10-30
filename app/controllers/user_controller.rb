@@ -3,10 +3,11 @@
 class UserController < ApplicationController
   def new
     @user = User.new
+    @city_list = City.select(:name, :id)
   end
 
   def show
-    @user = User.find(params['id'])
+    @user = User.find(params[:id])
   end
 
   def create
@@ -18,7 +19,7 @@ class UserController < ApplicationController
       redirect_to gossip_index_path
     else
       flash[:danger] = 'Please log in.'
-      render 'new'
+      render :new
     end
   end
 end
